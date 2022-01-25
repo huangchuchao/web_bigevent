@@ -26,7 +26,6 @@ $(function () {
     },
   });
 
-  var baseUrl = "http://www.liulongbin.top:3007"
   /* 监听注册表单的提交事件 */
   $("#reg-form").on("submit", function (e) {
     // 阻止默认的提交事件
@@ -35,7 +34,7 @@ $(function () {
       username: $("#reg-form [name=username]").val(),
       password: $("#reg-form [name=password]").val(),
     };
-    $.post(baseUrl + "/api/reguser", data, function (res) {
+    $.post("/api/reguser", data, function (res) {
       if (res.status !== 0) return layer.msg(res.message);
       layer.msg("注册成功！请返回登录！");
       $("#link_login").click();
@@ -48,7 +47,7 @@ $(function () {
     // console.log($(this).serialize());
     /* var data = {username: $('#login-form [name=username]').val(), password: $('#login-form [name=password]').val()} */
     $.ajax({
-      url: baseUrl + "/api/login",
+      url: "/api/login",
       method: "POST",
       data: $(this).serialize(),
       success: function (res) {
